@@ -28,6 +28,7 @@ export default function RequestList() {
                 <tr>
                   <th className="px-4 py-3 font-medium">Título</th>
                   <th className="px-4 py-3 font-medium">Área</th>
+                  <th className="px-4 py-3 font-medium">Prioridad</th>
                   <th className="px-4 py-3 font-medium">Estado</th>
                   <th className="px-4 py-3 font-medium">Fecha</th>
                 </tr>
@@ -41,6 +42,15 @@ export default function RequestList() {
                       </Link>
                     </td>
                     <td className="px-4 py-3 text-gray-600">{r.area_name}</td>
+                    <td className="px-4 py-3">
+                      <span className={`px-2 py-1 rounded text-xs font-medium ${
+                        r.priority === 'high' ? 'bg-red-100 text-red-700' :
+                        r.priority === 'medium' ? 'bg-yellow-100 text-yellow-700' :
+                        'bg-green-100 text-green-700'
+                      }`}>
+                        {r.priority || 'normal'}
+                      </span>
+                    </td>
                     <td className="px-4 py-3"><StatusBadge status={r.status} /></td>
                     <td className="px-4 py-3 text-gray-400">
                       {new Date(r.created_at).toLocaleDateString('es-MX')}
